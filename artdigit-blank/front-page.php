@@ -1,32 +1,30 @@
 <?php
 /**
- * The template for displaying the Front Page (Home)
+ * Template Name: Home Page
  *
- * @package Mon_Theme_Custom
+ * @package Artdigit_Blank
  */
 
-get_header(); ?>
+get_header();
 
-<main id="site-content">
-    <?php
-    // Section "Hero" (première cover)
-    get_template_part( 'template-parts/home/hero' );
+if (have_posts()) :
+    while (have_posts()) :
+        the_post();
+        
+        // Charge le contenu principal de la page
+        get_template_part('template-parts/content/page');
+        
+        // Charge les sections spécifiques de la page d'accueil
+        get_template_part('template-parts/sections/hero');
+        get_template_part('template-parts/sections/statistics');
+        get_template_part('template-parts/sections/services');
+        get_template_part('template-parts/sections/about');
+        get_template_part('template-parts/sections/testimonial');
+        get_template_part('template-parts/sections/contact-cta');
 
-    // Section "Stats" (notre bloc de chiffres)
-    get_template_part( 'template-parts/home/stats' );
+    endwhile;
+else :
+    get_template_part('template-parts/content/none');
+endif;
 
-    // Section "Services"
-    get_template_part( 'template-parts/home/services' );
-
-    // Section "About"
-    get_template_part( 'template-parts/home/about' );
-
-    // Section "Testimonial"
-    get_template_part( 'template-parts/home/testimonial' );
-
-    // Section "Contact CTA"
-    get_template_part( 'template-parts/home/contact', 'cta' );
-    ?>
-</main><!-- #site-content -->
-
-<?php get_footer(); ?>
+get_footer();

@@ -1,0 +1,23 @@
+.wp-block-button .wp-block-button__link {
+    border-radius: 3px;
+    font-size: 16px;
+    line-height: 1;
+    padding: 15px 32px;
+    transition: all 0.3s ease;
+}
+
+.wp-block-button .wp-block-button__link.primary {
+    background-color: #1e293b;
+    color: #ffffff;
+}
+
+.wp-block-button .wp-block-button__link.outline {
+    background: transparent;
+    color: #1e293b;
+    border-bottom: 1px solid #1e293b;
+    padding: 0;
+}
+
+.wp-block-button .wp-block-button__link:hover {
+    opacity: 0.9;
+}

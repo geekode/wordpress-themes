@@ -1,0 +1,28 @@
+.service-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-image {
+    margin: 0;
+}
+
+.card-image img {
+    width: 100%;
+    height: auto;
+}
+
+.card-title {
+    color: #1e293b;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    margin-top: 1.75rem;
+}
+
+.card-description {
+    color: #334155;
+    font-size: 16px;
+    margin-bottom: 1.5rem;
+}

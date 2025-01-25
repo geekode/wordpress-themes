@@ -1,9 +1,12 @@
-<footer id="colophon" class="site-footer">
-    <div class="site-info">
-        <p>&copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>. <?php _e( 'Tous droits réservés.', 'artdigit-blank' ); ?></p>
-    </div><!-- .site-info -->
-</footer><!-- #colophon -->
+<?php
+/**
+ * The footer template file
+ *
+ * @package Artdigit_Blank
+ */
 
-<?php wp_footer(); ?>
-</body>
-</html>
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+get_template_part('template-parts/footer/base');

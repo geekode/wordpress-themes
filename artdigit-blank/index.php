@@ -1,26 +1,47 @@
 <?php
 /**
- * Fichier principal de fallback
+ * Template principal
  *
- * @package Mon_Theme_Custom
+ * @package Artdigit_Blank
  */
 
-get_header(); ?>
+if (!defined('ABSPATH')) {
+    exit;
+}
 
-<main id="site-content">
+get_header();
+?>
 
-    <?php
-    if ( have_posts() ) :
-        while ( have_posts() ) :
-            the_post();
-            // Affiche le contenu de l’article ou de la page
-            the_content();
-        endwhile;
-    else :
-        echo '<p>' . __( 'Aucun contenu à afficher.', 'artdigit-blank' ) . '</p>';
-    endif;
-    ?>
+<main id="primary" class="site-main">
+    <div class="container">
+        <?php
+        if (have_posts()):
+            while (have_posts()):
+                the_post();
+                
+                if (is_front_page()) {
+                    get_template_part('template-parts/content/home');
+                } elseif (is_single()) {
+                    get_template_part('template-parts/content/single');
+                } elseif (is_page()) {
+                    get_template_part('template-parts/content/page');
+                } else {
+                    get_template_part('template-parts/content/excerpt');
+                }
+                
+            endwhile;
 
-</main><!-- #site-content -->
+            the_posts_navigation(array(
+                'prev_text' => __('Articles précédents', 'artdigit-blank'),
+                'next_text' => __('Articles suivants', 'artdigit-blank'),
+            ));
+            
+        else:
+            get_template_part('template-parts/content/none');
+        endif;
+        ?>
+    </div>
+</main>
 
-<?php get_footer(); ?>
+<?php
+get_footer();
